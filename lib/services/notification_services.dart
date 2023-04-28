@@ -88,10 +88,18 @@ class NotificationServices {
     });
   }
 
-  void handleMessage(BuildContext context, RemoteMessage message) {
+  void handleMessage(
+    BuildContext context,
+    RemoteMessage message,
+  ) {
     if (message.data["type"] == "test") {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => const MessageScreen()));
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: (context) => MessageScreen(
+                    title: message.notification!.title!,
+                    body: message.notification!.body!,
+                  )));
     }
   }
 

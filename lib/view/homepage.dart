@@ -75,9 +75,13 @@ class _HomePageState extends State<HomePage> {
                   onPressed: () {
                     _notificationRepo
                         .sendNotification(
-                            titleController.text, bodyController.text)
+                            context, titleController.text, bodyController.text)
                         .then((value) => showSnackBar(
-                            context, "Notification sent successfully"));
+                            context, "Notification sent successfully"))
+                        .then((value) {
+                      titleController.clear();
+                      bodyController.clear();
+                    });
                   })
             ],
           ),
